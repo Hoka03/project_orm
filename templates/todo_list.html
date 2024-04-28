@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+</head>
+<body>
+<a href="{% url 'add_todo_page' %}"><button>Create Todo</button></a>
+    <h1>Home Page</h1>
+
+
+    <ul>
+        {% for todo in todos %}
+            <li>============================================</li>
+            <li><strong>{{ forloop.counter }}.</strong></li>
+            <li><b>user: </b>{{ todo.user }}</li>
+
+            <li><b>category: </b>{{ todo.category }}</li>
+            <li><b>title: </b>{{ todo.title }}</li>
+            <li><b>description: </b>{{ todo.description }}</li>
+            <li><b>done: </b>{{ todo.done }}</li>
+            <li><b>done_at: </b>{{ todo.done_at }}</li>
+            <li><b>start_date: </b>{{ todo.start_date }}</li>
+            <li><b>end_date: </b>{{ todo.end_date }}</li>
+        <a href="{% url 'delete_page' todo.pk  %}" style="color: red">Delete</a>
+        <a href="{% url 'edit_page' todo.pk  %}" style="color: blue">Edit</a>
+        {% endfor %}
+    </ul>
+</body>
+</html>
